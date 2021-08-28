@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+    <meta charset="UTF-8">
+    <head >
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link rel="stylesheet" href="../static/bodyWeb/divBody.css"/>
+        <link rel="stylesheet" href="../static/bodyWeb/bodyWeb.css"/>
+        <link rel="stylesheet" href="../static/bodyWeb/slideShow.css"/>
+        <link rel="stylesheet" href="../static/topMenu/buttonStyles.css"/>
+        <link rel="stylesheet" href="../static/topMenu/menuLayout.css"/>
+        <link rel="stylesheet" href="../static/topMenu/dropDownMenu.css"/>
+
+        <link rel="stylesheet" href="../static/topWeb/headStyles.css"/>
+    </head>
+    <body>
+<!-- =====================================Website Header================================================ -->
+
+        <div id="topDiv">
+
+            <img src="../static/images/BankLogoNONBG.png" usemap="#bankLabel">
+            <map name="bankLabel">
+                <area shape="rect" coords="0, 0, 380, 380" href="{{url_for('show_user_info')}}">
+            </map>
+
+            <nav style="align-items: center;">
+                <ul class="bankInform">
+                    <label>QuaDa Bank</label>
+                    <li id="divLabels">
+                        <div id="facebook_icon"></div>
+                        <div id="email_icon"></div>
+                    </li>
+                    <li id="divLinks">
+                        <a href="https://www.facebook.com/quantd239/" id="link_fb">QuaDa Bank</a>
+                        <a href="https://mail.google.com" id="link_email">quan.td184178@sis.hust.edu.vn</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- ========================================Menu bar============================================= -->
+
+        <div id="menuBar">
+            <ul class="menuContain">
+                <li class="blankSpace" style="width: 200px; height: 100%; display: block;"></li>
+                <li id="logBtn" style="width:auto;">
+                    <a  href="#" id="logHref">Đăng xuất</a>
+                </li>
+                <!-- <script src="../static/topMenu/script/loginButton.js"></script> -->
+
+                <li id="news-eventBtn">
+                    <a href="#" id="newsHref">Tin tức, sự kiện</a>
+                </li>
+
+                <nav id="navDropdownMenu">
+                    <li id="dropDown" style="display: inline-block; width: 220px;"><a class="dropdownMenu" href="#">Chức năng</a>
+                        <ul>
+                            <li><a href="{{url_for('register_render')}}">Tạo tài khoản</a></li>
+                            <li><a href="{{url_for('unlock_account')}}">Mở khoá thẻ</a></li>
+                            <li><a href="{{url_for('send_money')}}">Chuyển tiền</a></li>
+                            <li><a href="{{url_for('show_trans_history')}}">Lịch sử g.dịch</a></li>
+                            <li><a href="{{url_for('lock_account')}}" style="height: 40px !important;">Khoá thẻ</a></li>
+                        </ul>
+                    </li>
+                </nav>
+
+                <link rel="stylesheet" href="../static/topMenu/searchBar.css"/>
+                <div id="searchBar">
+                    <input type="text" placeholder="Search.." id="searchBox">
+                </div>
+            </ul>
+        </div>
+
+<!-- ======================================Body=============================================== -->
+
+        <div id="divBody">
+            <div id="accountInform" class="informDiv">
+                <div id="header">
+                    <img src="../static/images/BankLogoNONBG.png">
+                    <label id="label">Thông tin tài khoản</label>
+                </div>
+                <div id="informs">
+                    <div id="cardNumber" style="background-color: #ccdcff;">
+                        <div class="informLabel">
+                            <p>Số thẻ :</p>
+                        </div>
+                        <div class="informValue" id="card_number">
+                            <p>{{ card_number }}</p>
+                        </div>
+                    </div>
+                    <div id="name">
+                        <div class="informLabel">
+                            <p>Chủ tài khoản :</p>
+                        </div>
+                        <div class="informValue" id="card_holder">
+                            <p>{{ card_holder }}</p>
+                        </div>
+                    </div>
+                    <div id="ballance" style="background-color: #ccdcff; border-bottom: 1px inset #6696ff;">
+                        <div class="informLabel">
+                            <p>Số dư tài khoản :</p>
+                        </div>
+                        <div class="informValue" id="ballance">
+                            <p>{{ balance }} VND</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="hotline">
+                    <img src="../static/images/Hotline Logo.png">
+                </div>
+                <script src="../static/script/getAccountInform.js"></script>
+            </div>
+
+            <div id="exchangeRate" class="informDiv" style="visibility: hidden;">
+            </div>
+
+            <div id="centerPageContain" style="border: none !important; height: fit-content !important;">
+                <table class="customersInform">
+                    <tr class="firstTR">
+                        <th>Account ID          </th>
+                        <th>Balance             </th>
+                        <th>Account status      </th>
+                        <th>Role                </th>
+                    </tr>
+                    {% for t in account %}
+                    <tr class="informTR">
+                        <td class="informTH">{{ t['account_id']     }}     </td>
+                        <td class="informTH">{{ t['balance']        }}     </td>
+                        {% if t['account_status']%}
+                            <td class="informTH greenColor">Active  </td>
+                        {% else %}
+                            <td class="informTH redColor">Inactive  </td>
+                        {% endif %}
+
+                        {% if t['role'] == 1 %}
+                            <td class="informTH">Bank Clerk </td>
+                        {% else %}
+                            <td class="informTH">Customer   </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+<!-- =======================================Go to top btn============================================== -->
+
+        <script>
+            var logStatus = '{{logStatus}}';    //0 : Da dang nhap, 1 : Chua dang nhap
+
+            if (logStatus == 0) {
+                var logBtn = document.getElementById("logBtn");
+                document.getElementById("logHref").innerHTML = "Đăng xuất";
+                document.getElementById("accountInform").style.visibility = "visible";
+                document.getElementById("dropDown").style.visibility = "visible";
+                logBtn.onclick = function() {
+                    window.location.href="{{url_for('logout')}}";
+                }
+            }
+        </script>
+        <button onclick="topFunction()" id="goTopBtn" title="Go to top">Top</button>
+        <script src="../static/script/onScroll.js"></script>
+    </body>
+</html>

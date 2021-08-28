@@ -1,0 +1,145 @@
+#topDiv {
+    width: auto;
+    height: 150px;
+    clear: both;
+    background-image: url("../images/topWebBG.jpg");
+    background-size: 100% 300%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+#topDiv>img {
+    position: relative;
+    left: 150px;
+    top: 15px;
+    width: 283;
+    height: 120px;
+}
+
+#bankLogoLabel {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ac2b5d;
+    font-size: 30px;
+    position: absolute;
+    left: 250px;
+    top: 25px;
+    filter: blur(.5px);
+}
+
+.bankLabel {
+    font-family: 'Times New Roman', Times, serif;
+    color: #3d0099;
+}
+
+#divBankLabel {
+    position: absolute;
+    left: 330px;
+    top: 80px;
+    font-size: 50px;
+}
+
+/*========================================================================================*/
+
+.bankInform {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 135px;
+    width: 600px;
+    align-items: center;
+    padding-top: 15px;
+    padding-right: 30px;
+}
+
+.bankInform label {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.bankInform a {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-decoration: none;
+    color: aqua;
+}
+
+.bankInform>label {
+    color: #ff5c33;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    height: 45px;
+    width: 600px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    filter: blur(.5px);
+}
+
+.bankInform #facebook_icon {
+    background-image: url("../images/logo_fb-removebg.png");
+    background-size: 40px 40px;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+.bankInform #email_icon {
+    background-image: url("../images/MailLogo.png");
+    background-size: 40px 40px;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+
+/*========================================================================================*/
+
+nav #divLabels {
+    float: left;
+    display: block;
+    list-style: none;
+    font-size: 18px;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 200px;
+    height: 90px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+nav #divLabels div {
+    display: block;
+    width: 200px;
+    height: 45px;
+}
+
+nav #divLinks {
+    float: right;
+    display: block;
+    list-style: none;
+    font-size: 18px;
+    filter: blur(.5px);
+    width: 380px;
+    height: 90px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    padding-left: 20px;
+}
+
+nav #divLinks a {
+    display: block;
+    text-align: left;
+    width: 400px;
+    height: 35px;
+    padding-top: 10px;
+}
